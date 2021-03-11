@@ -6,7 +6,11 @@
 </head>
 <body>
 <h1>Index</h1>
-<p><?php echo $msg; ?></p>
-<p>ID : <?php echo $id; ?></p>
+<p>{{$msg}}</p>
+<form method="post" action="/hello">
+    @csrf
+    <input type="text" name="msg">
+    <input type="submit">
+</form>
 </body>
 </html>
