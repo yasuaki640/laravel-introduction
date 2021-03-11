@@ -17,6 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hello/{msg?}', function ($msg='world') {
-    return "hello {$msg}";
-});
+Route::get('hello', 'App\Http\Controllers\HelloController@index');
