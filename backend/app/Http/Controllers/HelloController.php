@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 class HelloController extends Controller
 {
-    public function index(): string
+    public function index($id = 'noid', $pass = 'unknown'): string
     {
-        return HelloController::class . ' s index action';
+        return HelloController::class . ' s index action id : '
+            . $id
+            . ' and pass :'
+            . $pass;
     }
 }
