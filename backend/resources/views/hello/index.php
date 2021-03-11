@@ -7,6 +7,6 @@
 <body>
 <h1>Index</h1>
 <p><?php echo $msg; ?></p>
-<p><?php echo date('Y/n/j'); ?></p>
+<p>ID : <?php echo $id; ?></p>
 </body>
 </html>

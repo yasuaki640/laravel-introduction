@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 
 class HelloController extends Controller
 {
-    public function index()
+    public function index($id = 'none')
     {
-        $data = ['msg' => 'this value gained at controller'];
+        $data = [
+            'msg' => 'this value gained at controller',
+            'id' => $id
+        ];
         return view('hello.index', $data);
     }
 }
