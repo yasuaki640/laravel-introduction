@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hello/{id?}/{pass?}', 'App\Http\Controllers\HelloController@index');
+Route::get('hello', function () {
+    return view('hello.index');
+});
