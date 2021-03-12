@@ -9,13 +9,12 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        $data = ['msg' => 'Enter your name.'];
-        return view('hello.index', $data);
+        return view('hello.index');
     }
 
     public function post(Request $request)
     {
         $msg = $request->msg;
-        return view('hello.index', ['msg' => "hello {$msg}!!!"]);
+        return view('hello.index', ['msg' => $request->msg]);
     }
 }

@@ -6,7 +6,11 @@
 </head>
 <body>
 <h1>Index</h1>
-<p>{{$msg}}</p>
+@isset($msg)
+    <p>Hello {{$msg}}!!</p>
+@else
+    <p>enter your name</p>
+@endif
 <form method="post" action="/hello">
     @csrf
     <input type="text" name="msg">
