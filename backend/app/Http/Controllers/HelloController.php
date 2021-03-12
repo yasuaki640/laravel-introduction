@@ -9,7 +9,6 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        $data = ['kayako', 'tsubasa', 'riho', 'mio', 'nashiko', 'yume'];
-        return view('hello.index', ['data' => $data]);
+        return view('hello.index', ['message' => 'Hello']);
     }
 }
