@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>&commat;ディレクティブの例</p>
-@foreach($data as $item)
-    @if($loop->first)
-        <p>データ一覧</p>
-        <ul>
-            @endif
-            <li>No,{{$loop->iteration}}. {{$item}}</li>
-            @if($loop->last)
-        </ul>
-        <p>---ここまで</p>
-    @endif
-@endforeach
-</body>
-</html>
+@extends('layouts.helloapp')
+
+@section('title','index')
+
+@section('menubar')
+    @parent
+    Index page
+@endsection
+
+@section('content')
+    <p>ここが本文のコンテンツです</p>
+    <p>必要なだけ記述できます</p>
+    @include('components.message',['msg_title'=>'OK','msg_content'=>'This is sub view.'])
+@endsection
+
+@section('footer')
+    copyright 2021 yasu.
+@endsection
