@@ -5,16 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Index</h1>
-@isset($msg)
-    <p>Hello {{$msg}}!!</p>
-@else
-    <p>enter your name</p>
-@endif
-<form method="post" action="/hello">
-    @csrf
-    <input type="text" name="msg">
-    <input type="submit">
-</form>
+<p>&commat;ディレクティブの例</p>
+@foreach($data as $item)
+    @if($loop->first)
+        <p>データ一覧</p>
+        <ul>
+            @endif
+            <li>No,{{$loop->iteration}}. {{$item}}</li>
+            @if($loop->last)
+        </ul>
+        <p>---ここまで</p>
+    @endif
+@endforeach
 </body>
 </html>
