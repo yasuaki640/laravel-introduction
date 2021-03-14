@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HelloRequest;
 use Illuminate\Http\Request;
 
 class HelloController extends Controller
@@ -12,14 +13,8 @@ class HelloController extends Controller
         return view('hello.index');
     }
 
-    public function post(Request $request)
+    public function post(HelloRequest $request)
     {
-        $validation = [
-            'name' => 'required',
-            'mail' => 'email',
-            'age' => 'numeric|between:0,150'
-        ];
-        $this->validate($request, $validation);
         return view('hello.index', ['msg' => 'validation success']);
     }
 }
