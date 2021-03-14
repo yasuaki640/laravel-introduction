@@ -10,28 +10,20 @@
 @section('content')
     <p>{{$msg ?? ''}}</p>
     @if(count($errors) > 0)
-        <div>
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
+        <p>inputed has problem. please enter again.</p>
     @endif
     <form action="/hello" method="post">
         <table>
             @csrf
+            @if($errors->has('msg'))
+                <tr>
+                    <th>ERROR</th>
+                    <td>{{$errors->first('msg')}}</td>
+                </tr>
+            @endif
             <tr>
-                <th>name:</th>
-                <td><input type="text" name="name" value="{{old('name')}}"></td>
-            </tr>
-            <tr>
-                <th>mail:</th>
-                <td><input type="text" name="mail" value="{{old('mail')}}"></td>
-            </tr>
-            <tr>
-                <th>age:</th>
-                <td><input type="text" name="age" value="{{old('age')}}"></td>
+                <th>Message:</th>
+                <td><input type="text" name="msg" value="{{old('msg')}}"></td>
             </tr>
             <tr>
                 <th></th>
