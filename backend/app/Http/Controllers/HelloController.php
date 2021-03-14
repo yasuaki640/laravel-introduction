@@ -11,10 +11,15 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        $validator = Validator::make($request->query(), [
+        $rules = [
             'id' => 'required',
             'pass' => 'required'
-        ]);
+        ];
+        $validation_msg = [
+            'name.required' => '名前必須',
+            'mail.email' => 'メルアド形式でうて',
+        ];
+        $validator = Validator::make($request->query(), $rules, $validation_msg);
         $msg = $validator->fails() ? 'failure' : 'success';
         return view('hello.index', ['msg' => $msg]);
     }
