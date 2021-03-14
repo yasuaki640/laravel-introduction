@@ -11,31 +11,11 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        $rules = [
-            'id' => 'required',
-            'pass' => 'required'
-        ];
-        $validation_msg = [
-            'name.required' => '名前必須',
-            'mail.email' => 'メルアド形式でうて',
-        ];
-        $validator = Validator::make($request->query(), $rules, $validation_msg);
-        $msg = $validator->fails() ? 'failure' : 'success';
-        return view('hello.index', ['msg' => $msg]);
+        return view('hello.index', ['msg' => 'input to form']);
     }
 
-    public function post(Request $request)
+    public function post(HelloRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'mail' => 'email',
-            'age' => 'numeric|between:0,150'
-        ]);
-        if ($validator->fails()) {
-            return redirect('/hello')
-                ->withErrors($validator)
-                ->withInput();
-        }
         return view('hello.index', ['msg' => 'validation success']);
     }
 }
