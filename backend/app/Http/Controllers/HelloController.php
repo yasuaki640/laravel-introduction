@@ -12,12 +12,7 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        if (isset($request->id)) {
-            $param = ['id' => $request->get('id')];
-            $items = DB::select('select * from people where id = :id', $param);
-        } else {
-            $items = DB::select('select * from people');
-        }
+        $items = DB::table('people')->get();
         return view('hello.index', ['items' => $items]);
     }
 
@@ -65,5 +60,15 @@ class HelloController extends Controller
         ];
         DB::update('update people set name =:name,mail=:mail,age=:age where id = :id');
         return redirect('/hello');
+    }
+
+    public function show(Request $request)
+    {
+        $min = $request->query('min');
+        $max = $request->query('max');
+        $items = DB::table('people')
+            ->whereRaw('age >= ? and age <= ?', [$min, $max])
+            ->get();
+        return view('hello.show', ['items' => $items]);
     }
 }
