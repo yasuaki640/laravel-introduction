@@ -3,3 +3,4 @@
 
 # Docker Compose
 .env
+/infra/vagrant/.vagrant/
