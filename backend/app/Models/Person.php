@@ -10,32 +10,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
-    use HasFactory;
+    protected $guarded = ['id'];
 
-    public function getData(): string
+    public static $rules = [
+        'name' => 'required',
+        'mail' => 'email',
+        'age' => 'integer|min:0|max:150'
+    ];
+
+    public function getData()
     {
-        return "{$this->id} : {$this->name} ({$this->age})";
-    }
-
-    public function scopeNameEqual($query, string $str): Builder
-    {
-        return $query->where('name', $str);
-    }
-
-    public function scopeAgeGreaterThan(Builder $query, int $n): Builder
-    {
-        return $query->where('age', '>=', $n);
-    }
-
-    public function scopeAgeLessThan(Builder $query, int $n): Builder
-    {
-        return $query->where('age', '<=', $n);
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope(new ScopePerson());
+        return $this;
     }
 }
