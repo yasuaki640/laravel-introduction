@@ -15,6 +15,11 @@
         @foreach($items as $item)
             <tr>
                 <td>{{$item->__toString()}}</td>
+                <td>
+                    @if($item->board !=null)
+                        {{$item->board}}
+                    @endif
+                </td>
             </tr>
         @endforeach
     </table>

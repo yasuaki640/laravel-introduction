@@ -22,4 +22,9 @@ class Person extends Model
     {
         return $this;
     }
+
+    public function board()
+    {
+        return $this->hasOne('App\Models\Board');
+    }
 }
