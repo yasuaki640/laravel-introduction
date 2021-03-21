@@ -45,4 +45,23 @@ class PersonController extends Controller
 
         return redirect('/person');
     }
+
+    public function edit(Request $request)
+    {
+        $person = Person::find($request->query('id'));
+        return view('person.edit', ['form' => $person]);
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, Person::$rules);
+        $form = $request->all();
+        unset($form['__token']);
+
+        $person = Person::find($request->input('id'));
+        $person->fill($form)->save();
+
+        return redirect('/person');
+    }
+
 }
