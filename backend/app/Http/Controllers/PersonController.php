@@ -64,4 +64,9 @@ class PersonController extends Controller
         return redirect('/person');
     }
 
+    public function remove(Request $request)
+    {
+        Person::find($request->query('id'))->delete();
+        return redirect('/person');
+    }
 }
