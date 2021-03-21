@@ -10,14 +10,21 @@
 @section('content')
     <table>
         <tr>
-            <th>Data</th>
+            <th>Person</th>
+            <th>Board</th>
         </tr>
         @foreach($items as $item)
             <tr>
-                <td>{{$item->__toString()}}</td>
+                <td>{{$item}}</td>
                 <td>
-                    @if($item->board !=null)
-                        {{$item->board}}
+                    <table>
+                        @if($item->boards != null)
+                            @foreach($item->boards as $obj)
+                                <tr>
+                                    <td>{{$obj}}</td>
+                                </tr>
+                            @endforeach
+                    </table>
                     @endif
                 </td>
             </tr>
