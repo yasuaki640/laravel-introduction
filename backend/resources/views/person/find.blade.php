@@ -10,7 +10,7 @@
 @section('content')
     <form action="/person/find" method="post">
         @csrf
-        <input type="text" name="id" value="{{$id}}">
+        <input type="text" name="name" value="{{$name}}">
         <input type="submit" value="find">
     </form>
     @if (isset($item))
@@ -19,7 +19,7 @@
                 <th>Data</th>
             </tr>
             <tr>
-                <td>{{$item->__toString()}}</td>
+                <td>{{$item->getData()}}</td>
             </tr>
         </table>
     @endif

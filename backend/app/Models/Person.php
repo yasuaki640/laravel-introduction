@@ -10,7 +10,7 @@ class Person extends Model
 {
     use HasFactory;
 
-    public function __toString()
+    public function getData()
     {
         return "{$this->id} : {$this->name} ({$this->age})";
     }

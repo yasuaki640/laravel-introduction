@@ -15,14 +15,14 @@ class PersonController extends Controller
 
     public function find(Request $request)
     {
-        return view('person.find', ['id' => '']);
+        return view('person.find', ['name' => '']);
     }
 
     public function search(Request $request)
     {
-        $item = Person::find($request->input('id'));
+        $item = Person::where('name', $request->input('name'))->first();
         $param = [
-            'id' => $request->input('id'),
+            'name' => $request->input('name'),
             'item' => $item
         ];
         return view('person.find', $param);
