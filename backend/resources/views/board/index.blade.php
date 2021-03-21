@@ -14,7 +14,7 @@
         </tr>
         @foreach($items as $item)
             <tr>
-                <td>{{$item}}</td>
+                <td>{{$item->getData()}}</td>
             </tr>
         @endforeach
     </table>

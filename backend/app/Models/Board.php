@@ -19,6 +19,12 @@ class Board extends Model
 
     public function getData()
     {
-        return $this;
+        $pName = $this->person->name ?? '';
+        return $this->id . ' : ' . $this->title . ' (' . $pName . ')';
+    }
+
+    public function person()
+    {
+        return $this->belongsTo('App\Models\Person');
     }
 }
