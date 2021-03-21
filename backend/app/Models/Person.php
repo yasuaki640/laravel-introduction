@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Scopes\ScopePerson;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,8 +36,6 @@ class Person extends Model
     {
         parent::boot();
 
-        static::addGlobalScope('age', function (Builder $builder) {
-            $builder->where('age', '>', 20);
-        });
+        static::addGlobalScope(new ScopePerson());
     }
 }
