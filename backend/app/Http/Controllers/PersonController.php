@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
@@ -20,7 +21,7 @@ class PersonController extends Controller
 
     public function search(Request $request)
     {
-        $item = Person::where('name', $request->input('name'))->first();
+        $item = Person::nameEqual($request->input('name'))->first();
         $param = [
             'name' => $request->input('name'),
             'item' => $item
