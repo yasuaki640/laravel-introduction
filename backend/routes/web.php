@@ -40,3 +40,6 @@ Route::get('person/delete', 'App\Http\Controllers\PersonController@remove');
 Route::get('board','App\Http\Controllers\BoardController@index');
 Route::get('board/add','App\Http\Controllers\BoardController@add');
 Route::post('board/add','App\Http\Controllers\BoardController@create');
+
+Route::get('hello/session', 'App\Http\Controllers\HelloController@sesGet');
+Route::post('hello/session', 'App\Http\Controllers\HelloController@sesPut');
