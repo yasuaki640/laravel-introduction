@@ -22,6 +22,7 @@
             </tr>
         @endforeach
     </table>
+    {{$items->links()}}
 @endsection
 
 @section('footer')
