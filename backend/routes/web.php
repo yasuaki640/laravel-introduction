@@ -43,3 +43,7 @@ Route::post('board/add','App\Http\Controllers\BoardController@create');
 
 Route::get('hello/session', 'App\Http\Controllers\HelloController@sesGet');
 Route::post('hello/session', 'App\Http\Controllers\HelloController@sesPut');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
