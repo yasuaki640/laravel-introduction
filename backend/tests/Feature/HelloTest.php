@@ -2,12 +2,17 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class HelloTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /**
      * A basic feature test example.
      *
@@ -35,5 +40,15 @@ class HelloTest extends TestCase
         } catch (\Exception $e) {
             return;
         }
+    }
+
+    public function test_response()
+    {
+        $user = Factory::factoryForModel(User::class)->create();
+        $response = $this->actingAs($user)->get('/hello');
+        $response->assertStatus(200);
+
+        $response = $this->get('/not/exist/route');
+        $response->assertStatus(404);
     }
 }
