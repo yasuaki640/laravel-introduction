@@ -25,7 +25,8 @@ Route::post('hello/add', 'App\Http\Controllers\HelloController@create');
 Route::get('hello/edit', 'App\Http\Controllers\HelloController@edit');
 Route::post('hello/edit', 'App\Http\Controllers\HelloController@update');
 Route::get('hello/show', 'App\Http\Controllers\HelloController@show');
-Route::get('person', 'App\Http\Controllers\PersonController@index');
+Route::get('person', 'App\Http\Controllers\PersonController@index')
+    ->middleware('auth');
 Route::get('person/find', 'App\Http\Controllers\PersonController@find');
 Route::post('person/find', 'App\Http\Controllers\PersonController@search');
 
